@@ -23,7 +23,7 @@ public class WifiLogin {
     private static final String R_SIX = "R6";
     private static final String PARAMETER = "para";
     private static final String OMMKEY = "OMKKey";
-    private static final String LOGIN_SUCCESS = "登陆成功页";
+    private static final String LOGIN_SUCCESS = "成功登录";
 
     public void loginScutStudentWifi(){
 
@@ -37,6 +37,7 @@ public class WifiLogin {
         template.setRequestFactory(factory);
         ResponseEntity<String> response = template.postForEntity(LOGIN_URL, requestBody, String.class);
         System.out.println(response.getStatusCode());
+        // System.out.println(response.getBody());
         printHelpMessage(response.getBody());
     }
 
@@ -60,7 +61,7 @@ public class WifiLogin {
         }
         MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
         map.add(ACCOUNT, form.getProperty(ACCOUNT));
-        map.add(PASSWORD, form.getProperty(PARAMETER));
+        map.add(PASSWORD, form.getProperty(PASSWORD));
         map.add(R_ONE, form.getProperty(R_ONE));
         map.add(R_TWO, form.getProperty(R_TWO));
         map.add(R_SIX, form.getProperty(R_SIX));
